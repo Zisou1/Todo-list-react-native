@@ -20,7 +20,7 @@
       };
     
       return (
-        <View style={styles.container}>
+        <View >
           <Text style={styles.title}>Welcome to Your App</Text>
     
           {/* Input fields for username and password */}
