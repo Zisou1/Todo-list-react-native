@@ -1,47 +1,39 @@
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import styles from './login.style';
+
+const Login = () => {
 
 
+  return (
+    <View>
+      <Text style={styles.title}>Welcome to Your Todolist</Text>
+      {/* Icons of the famous authentication methods */}
+      <View style={styles.logoContainer}>
+        <TouchableOpacity style={[styles.logoIcon]} >
+          <Text>
+            <Icon name="google" size={30} color="#4285F4" /> {/* Gmail */}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.logoIcon]} >
+          <Text>
+            <Icon name="apple" size={30} color="#4285F4" /> {/* Apple */}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.logoIcon]} >
+          <Text>
+            <Icon name="facebook" size={30} color="#4285F4" /> {/* Facebook */}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.logoIcon]} >
+          <Text>
+            <Icon name="twitter" size={30} color="#4285F4" /> {/* Twitter */}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
 
-    import styles from "./login.style"
-    import React, { useState } from 'react';
-    import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-    
-    // Functional component for the login page
-    const Login = () => {
-      // State to manage the username and password input
-      const [username, setUsername] = useState('');
-      const [password, setPassword] = useState('');
-    
-      // Function to handle the login button press
-      const handleLogin = () => {
-        // Implement your login logic here
-        // For now, let's just log the credentials
-        console.log('Username:', username);
-        console.log('Password:', password);
-      };
-    
-      return (
-        <View >
-          <Text style={styles.title}>Welcome to Your App</Text>
-    
-          {/* Input fields for username and password */}
-          <TextInput
-            style={styles.input}
-            placeholder="Username"
-            onChangeText={(text) => setUsername(text)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            secureTextEntry={true}
-            onChangeText={(text) => setPassword(text)}
-          />
-    
-          {/* Login button */}
-          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity>
-        </View>
-      );
-    };
-
-    export default Login;
+export default Login;

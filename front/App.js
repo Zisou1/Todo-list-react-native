@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center', // You can adjust this based on your layout requirements
     alignItems: 'center',
-    backgroundColor: '#C25E85', // Set the background color if needed
+    backgroundColor: '#1C293A', // Set the background color if needed
   },
 });
 
