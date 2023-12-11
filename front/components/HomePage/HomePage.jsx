@@ -1,9 +1,10 @@
 
 import { View, Text } from 'react-native';
+
 const HomePage = () => {
   return (
 <View>
-    <Text></Text>
+    <Text > Welcome Home </Text>
 </View>  )
 }
 export default HomePage;
