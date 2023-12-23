@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from 'react-native-auth0';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
