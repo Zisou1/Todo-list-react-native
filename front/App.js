@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Auth0Provider } from '@auth0/auth0-react';
+import { Auth0Provider } from 'react-native-auth0';
 import Login from './components/Login/Login';
 import HomePage from './components/HomePage/HomePage';
 

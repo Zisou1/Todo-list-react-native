@@ -30,11 +30,9 @@ const styles = StyleSheet.create({
   const Login = () => {
     const { loginWithRedirect } = useAuth0();
   
-    const handleLogin = async (provider) => {
+    const handleLogin = async () => {
       try {
-        await loginWithRedirect({
-          screen_hint: provider,
-        });
+        await loginWithRedirect();
       } catch (error) {
         console.error('Authentication failed: ', error);
       }
@@ -44,7 +42,7 @@ const styles = StyleSheet.create({
       <Text style={styles.title}>Welcome to Your Todolist</Text>
       {/* Icons of the famous authentication methods */}
       <View style={styles.logoContainer}>
-        <TouchableOpacity style={[styles.logoIcon]} onPress={() => handleLogin('google-oauth2')} >
+        <TouchableOpacity style={[styles.logoIcon]} onPress={() => handleLogin()} >
           <Text>
             <Icon name="google" size={30} color="#4285F4" /> {/* Gmail */}
           </Text>
