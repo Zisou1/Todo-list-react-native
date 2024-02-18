@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useAuth0 } from 'react-native-auth0';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -28,21 +27,13 @@ const styles = StyleSheet.create({
     
   });
   const Login = () => {
-    const { loginWithRedirect } = useAuth0();
-  
-    const handleLogin = async () => {
-      try {
-        await loginWithRedirect();
-      } catch (error) {
-        console.error('Authentication failed: ', error);
-      }
-    };
+    
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Your Todolist</Text>
       {/* Icons of the famous authentication methods */}
       <View style={styles.logoContainer}>
-        <TouchableOpacity style={[styles.logoIcon]} onPress={() => handleLogin()} >
+        <TouchableOpacity style={[styles.logoIcon]} >
           <Text>
             <Icon name="google" size={30} color="#4285F4" /> {/* Gmail */}
           </Text>
