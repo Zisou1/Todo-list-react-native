@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#1C293A",
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: "bold",
-    marginBottom: 50,
+    marginBottom: 30,
     color: "#FFFFFF",
   },
   logoContainer: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   loginButton: {
-    marginTop: 30,
+    marginTop: 15,
     backgroundColor: "#0096FB",
     width: "80%",
     borderRadius: 5,
@@ -50,6 +50,27 @@ const styles = StyleSheet.create({
     marginTop: 20,
     color: "#FFF",
   },
+  googleButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFF",
+    width: "80%",
+    borderRadius: 5,
+    padding: 15,
+    marginBottom: 30,
+    justifyContent: "center",
+  },
+  googleButtonText: {
+    color: "#000",
+    marginLeft: 10,
+    fontSize: 16,
+  },
+  divider: {
+    backgroundColor: "#7f8c8d",
+    height: 1,
+    width: "80%",
+    marginBottom: 30,
+  },
 });
 
 const LoginScreen: React.FC = () => {
@@ -62,8 +83,12 @@ const LoginScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome !</Text>
+      <TouchableOpacity style={styles.googleButton}>
+        <Icon name="google" size={24} color="#0096FB" />
+        <Text style={styles.googleButtonText}>Sign in with Google</Text>
+      </TouchableOpacity>
+      <View style={styles.divider} />
       <View style={styles.logoContainer}>
-        <Icon name="user" size={24} style={styles.logoIcon} />
         <TextInput
           style={styles.input}
           placeholder="Username"
@@ -71,7 +96,6 @@ const LoginScreen: React.FC = () => {
         />
       </View>
       <View style={styles.logoContainer}>
-        <Icon name="lock" size={24} style={styles.logoIcon} />
         <TextInput
           style={styles.input}
           placeholder="Password"
