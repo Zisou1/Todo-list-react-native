@@ -1,5 +1,6 @@
 {
   "expo": {
+    "plugins":["@react-native-google-signin/google-signin"],
     "name": "TodoList",
     "slug": "TodoList",
     "version": "1.0.0",
@@ -15,16 +16,30 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "android": {
+      "googleServicesFile": "./android/app/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.TodoList",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b6f29632-3449-4867-9302-fc225ffbcca1"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/b6f29632-3449-4867-9302-fc225ffbcca1"
     }
   }
 }
