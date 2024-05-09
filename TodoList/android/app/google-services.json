@@ -1,78 +1,41 @@
 {
   "project_info": {
-    "project_number": "390329668506",
-    "project_id": "blooddonation-9f61e",
-    "storage_bucket": "blooddonation-9f61e.appspot.com"
+    "project_number": "38467005667",
+    "project_id": "todolist-661f6",
+    "storage_bucket": "todolist-661f6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:390329668506:android:d098c01016ef2a0138e023",
+        "mobilesdk_app_id": "1:38467005667:android:73488f14e628b00d2d69d6",
         "android_client_info": {
           "package_name": "com.anonymous.TodoList"
         }
       },
       "oauth_client": [
         {
-          "client_id": "390329668506-pcrjeb13vg4oavtnlvg6jn04l5f9jkdo.apps.googleusercontent.com",
+          "client_id": "38467005667-otvji61gm98jmsivochdlvhqoev31gte.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.anonymous.TodoList",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+            "certificate_hash": "9a9503215107e33be2364c30f5ab4396adee8058"
           }
         },
         {
-          "client_id": "390329668506-k27mat3n5dimip9ag5ksqh53t53n407n.apps.googleusercontent.com",
+          "client_id": "38467005667-dagkdrd55bigrfothahi2ncai1epgns1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBXS6tZzgblqbSKI38O03nPYQKky2KxSmk"
+          "current_key": "AIzaSyCj8pxyedCPIlYTzYBKqiiGDZtHw5j5s-k"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "390329668506-k27mat3n5dimip9ag5ksqh53t53n407n.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:390329668506:android:aa4fb39dc9b4a36738e023",
-        "android_client_info": {
-          "package_name": "com.raouf21.ooredooBloodDonation"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "390329668506-dd4lrk52mtb47k5cnckf6q0p4d1kvtdo.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.raouf21.ooredooBloodDonation",
-            "certificate_hash": "a4a4073ab3990f4ca6a358229b993f2573d3fe14"
-          }
-        },
-        {
-          "client_id": "390329668506-k27mat3n5dimip9ag5ksqh53t53n407n.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBXS6tZzgblqbSKI38O03nPYQKky2KxSmk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "390329668506-k27mat3n5dimip9ag5ksqh53t53n407n.apps.googleusercontent.com",
+              "client_id": "38467005667-dagkdrd55bigrfothahi2ncai1epgns1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

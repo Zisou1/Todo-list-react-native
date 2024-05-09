@@ -3,12 +3,14 @@ import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { StyleSheet } from "react-native";
 import * as WebBrowser from "expo-web-browser";
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import auth from '@react-native-firebase/auth';
 GoogleSignin.configure({
-  webClientId: '390329668506-pcrjeb13vg4oavtnlvg6jn04l5f9jkdo.apps.googleusercontent.com',
+  webClientId: '38467005667-dagkdrd55bigrfothahi2ncai1epgns1.apps.googleusercontent.com',
+  
+  offlineAccess: true,
 });
 async function onGoogleButtonPress() {
   // Check if your device supports Google Play
