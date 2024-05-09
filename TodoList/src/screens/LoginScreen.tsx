@@ -3,13 +3,18 @@ import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { StyleSheet } from "react-native";
 import * as WebBrowser from "expo-web-browser";
-import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-google-signin/google-signin';
+import {
+  GoogleSignin,
+  statusCodes,
+  GoogleSigninButton,
+} from "@react-native-google-signin/google-signin";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import auth from '@react-native-firebase/auth';
+import auth from "@react-native-firebase/auth";
 GoogleSignin.configure({
-  webClientId: '38467005667-dagkdrd55bigrfothahi2ncai1epgns1.apps.googleusercontent.com',
-  
+  webClientId:
+    "38467005667-dagkdrd55bigrfothahi2ncai1epgns1.apps.googleusercontent.com",
+
   offlineAccess: true,
 });
 async function onGoogleButtonPress() {
@@ -99,11 +104,17 @@ const LoginScreen: React.FC = () => {
   const goToRegisterScreen = () => {
     navigation.navigate("Register" as never); // Type assertion
   };
+  const navigateToHome = () => {
+    navigation.navigate("Home" as never); // Assuming "Home" is the name of your home screen
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome !</Text>
-      <TouchableOpacity style={styles.googleButton} onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
+      <TouchableOpacity
+        style={styles.googleButton}
+        onPress={() => onGoogleButtonPress().then(() => navigateToHome())}
+      >
         <Icon name="google" size={24} color="#0096FB" />
         <Text style={styles.googleButtonText}>Sign in with Google</Text>
       </TouchableOpacity>
