@@ -1,11 +1,17 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
+
 import { Text, Image, View, StyleSheet, TouchableOpacity } from "react-native";
 // @ts-ignore
 import DoMoreLogo from "../assets/DoMoreLogo.png";
 // @ts-ignore
 import IntroductionVector from "../assets/IntroductionVector.png";
 
-const IntroScreen = () => {
+const IntroScreen: React.FC = () => {
+  const navigation = useNavigation();
+  const goToLoginScreen = () => {
+    navigation.navigate("Login" as never); // Type assertion
+  };
   return (
     <View style={styles.container}>
       <View style={styles.circleLeft} />
@@ -17,7 +23,11 @@ const IntroScreen = () => {
         <Text style={styles.text}>of yourself</Text>
       </View>
       <Image source={IntroductionVector} style={styles.vector} />
-      <TouchableOpacity style={styles.button} activeOpacity={0.9}>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.9}
+        onPress={goToLoginScreen}
+      >
         <Text style={styles.buttonText}>Get Started</Text>
       </TouchableOpacity>
     </View>
