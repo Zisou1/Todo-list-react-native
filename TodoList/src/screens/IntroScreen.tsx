@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 import { Text, Image, View, StyleSheet, TouchableOpacity } from "react-native";
 // @ts-ignore
@@ -28,7 +29,15 @@ const IntroScreen: React.FC = () => {
         activeOpacity={0.9}
         onPress={goToLoginScreen}
       >
-        <Text style={styles.buttonText}>Get Started</Text>
+        <View style={styles.buttonContent}>
+          <Text style={styles.buttonText}>Get Started</Text>
+          <Icon
+            name="arrow-right"
+            size={30}
+            color="#FFF"
+            style={styles.arrowIcon}
+          />
+        </View>
       </TouchableOpacity>
     </View>
   );
@@ -82,6 +91,13 @@ const styles = StyleSheet.create({
     color: "white",
     fontFamily: "Poppins-Bold",
     fontSize: 30,
+  },
+  buttonContent: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  arrowIcon: {
+    marginLeft: 10, // Adjust the spacing between the text and the arrow icon as needed
   },
   circleLeft: {
     width: circleSize,
