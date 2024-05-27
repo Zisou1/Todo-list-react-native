@@ -11,24 +11,17 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import auth from "@react-native-firebase/auth";
+import { useDispatch } from "react-redux";
+import HomeScreen from "./HomeScreen";
+import { setUserid } from "../redux/slices/Credentials";
+
 GoogleSignin.configure({
   webClientId:
     "38467005667-dagkdrd55bigrfothahi2ncai1epgns1.apps.googleusercontent.com",
 
   offlineAccess: true,
 });
-async function onGoogleButtonPress() {
-  // Check if your device supports Google Play
-  await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-  // Get the users ID token
-  const { idToken } = await GoogleSignin.signIn();
 
-  // Create a Google credential with the token
-  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-  // Sign-in the user with the credential
-  return auth().signInWithCredential(googleCredential);
-}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -99,13 +92,39 @@ const styles = StyleSheet.create({
 });
 
 const LoginScreen: React.FC = () => {
+  async function onGoogleButtonPress() {
+  
+    try {
+      // Check if your device supports Google Play
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+  
+      // Get the users ID token
+      const { idToken } = await GoogleSignin.signIn();
+  
+      // Create a Google credential with the token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  
+      // Sign-in the user with the credential
+      const userCredential = await auth().signInWithCredential(googleCredential);
+  
+      // Get the UID of the logged-in user
+      const uid = userCredential.user.uid;
+      console.log(uid);
+      dispatch(setUserid(uid))
+  
+      return uid;
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+      throw error;
+    }
+  }
   const navigation = useNavigation();
-
+  const dispatch = useDispatch();
   const goToRegisterScreen = () => {
     navigation.navigate("Register" as never); // Type assertion
   };
   const navigateToHome = () => {
-    navigation.navigate("Home" as never); // Assuming "Home" is the name of your home screen
+    navigation.navigate("HomeScreen" as never); // Assuming "Home" is the name of your home screen
   };
 
   return (
@@ -113,7 +132,7 @@ const LoginScreen: React.FC = () => {
       <Text style={styles.title}>Welcome !</Text>
       <TouchableOpacity
         style={styles.googleButton}
-        onPress={() => onGoogleButtonPress().then(() => navigateToHome())}
+        onPress={() => onGoogleButtonPress()}
       >
         <Icon name="google" size={24} color="#0096FB" />
         <Text style={styles.googleButtonText}>Sign in with Google</Text>
