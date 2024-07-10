@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity, TextInput, Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { StyleSheet } from "react-native";
 import * as WebBrowser from "expo-web-browser";
@@ -18,7 +18,6 @@ import { setUserid } from "../redux/slices/Credentials";
 GoogleSignin.configure({
   webClientId:
     "38467005667-dagkdrd55bigrfothahi2ncai1epgns1.apps.googleusercontent.com",
-
   offlineAccess: true,
 });
 
@@ -92,39 +91,69 @@ const styles = StyleSheet.create({
 });
 
 const LoginScreen: React.FC = () => {
-  async function onGoogleButtonPress() {
-  
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const user = await AsyncStorage.getItem("user");
+      if (user) {
+        navigateToHome();
+      }
+    };
+
+    checkUser();
+  }, []);
+
+  const onGoogleButtonPress = async () => {
     try {
       // Check if your device supports Google Play
       await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-  
+
       // Get the users ID token
       const { idToken } = await GoogleSignin.signIn();
-  
+
       // Create a Google credential with the token
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-  
+
       // Sign-in the user with the credential
       const userCredential = await auth().signInWithCredential(googleCredential);
-  
+
       // Get the UID of the logged-in user
       const uid = userCredential.user.uid;
       console.log(uid);
-      dispatch(setUserid(uid))
-  
+      dispatch(setUserid(uid));
+
+      // Save user to AsyncStorage
+      await AsyncStorage.setItem("user", JSON.stringify({ uid }));
+
+      navigateToHome();
+
       return uid;
     } catch (error) {
       console.error("Google sign-in error:", error);
       throw error;
     }
-  }
-  const navigation = useNavigation();
-  const dispatch = useDispatch();
-  const goToRegisterScreen = () => {
-    navigation.navigate("Register" as never); // Type assertion
   };
+
+  const registerUser = async () => {
+    try {
+      const user = { username, password };
+      await AsyncStorage.setItem("user", JSON.stringify(user));
+      navigateToHome();
+    } catch (error) {
+      console.error("Error registering user:", error);
+    }
+  };
+
   const navigateToHome = () => {
     navigation.navigate("HomeScreen" as never); // Assuming "Home" is the name of your home screen
+  };
+
+  const goToRegisterScreen = () => {
+    navigation.navigate("Register" as never); // Type assertion
   };
 
   return (
@@ -132,7 +161,7 @@ const LoginScreen: React.FC = () => {
       <Text style={styles.title}>Welcome !</Text>
       <TouchableOpacity
         style={styles.googleButton}
-        onPress={() => onGoogleButtonPress()}
+        onPress={onGoogleButtonPress}
       >
         <Icon name="google" size={24} color="#0096FB" />
         <Text style={styles.googleButtonText}>Sign in with Google</Text>
@@ -143,6 +172,8 @@ const LoginScreen: React.FC = () => {
           style={styles.input}
           placeholder="Username"
           placeholderTextColor="#7f8c8d"
+          value={username}
+          onChangeText={setUsername}
         />
       </View>
       <View style={styles.logoContainer}>
@@ -151,9 +182,11 @@ const LoginScreen: React.FC = () => {
           placeholder="Password"
           placeholderTextColor="#7f8c8d"
           secureTextEntry
+          value={password}
+          onChangeText={setPassword}
         />
       </View>
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={registerUser}>
         <Text style={styles.loginText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={goToRegisterScreen}>
